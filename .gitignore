@@ -1,0 +1,35 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Dati locali
+recordings/
+transcripts/
+
+# Modelli AI
+models/*
+
+# Audio
+       *.wav
+       *.mp3
+       *.m4a
+       *.flac
+       *.ogg
+       *.wav.txt
+
+# Dipendenze esterne e build
+vendor/whisper.cpp/
+build/
+dist/
+
+# File locali e temporanei
+.env
+.env.*
+!.env.example
+.DS_Store
+/test.wav
+/test.wav.txt

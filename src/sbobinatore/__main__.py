@@ -1,23 +1,30 @@
 import argparse
 from pathlib import Path
 
+from .recorder import record
 from .transcriber import transcribe
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Trascrive un file audio localmente."
-    )
+            description="Registra e trascrive audio localmente."
+            )
 
     parser.add_argument(
-        "audio",
-        type=Path,
-        help="File audio da trascrivere",
-    )
+            "audio",
+            type=Path,
+            nargs="?",
+            help="File audio da trascrivere. Se omesso, registra dal microfono.",
+            )
 
     args = parser.parse_args()
 
-    output = transcribe(args.audio)
+    if args.audio is None:
+        audio_file = record()
+    else:
+        audio_file = args.audio
+
+    output = transcribe(audio_file)
 
     print()
     print(f"Trascrizione salvata in: {output}")
